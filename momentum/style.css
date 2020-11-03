@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background-size: cover;
+  color: white;
+  transition: background 2s ease-in-out;
+}
+
+.time {
+  font-size: 8rem;
+  font-weight: 600;
+}
+.date {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+h1 {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.name {
+  display: block;
+  min-width: 50px;
+}
+h2 {
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+.focus {
+  min-width: 50px;
+}
+.button__background {
+  width: 180px;
+  height: 40px;
+  padding: 10px;
+  background: rgba(240, 255, 255, 0.452);
+  border-radius: 10px;
+  border: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: grayscale(0.8);
+  font-size: 16px;
+  font-weight: 700;
+  bottom: 0;
+  cursor: grab;
+  
+}
+.button__background_position {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.button__background:hover {
+  filter: grayscale(0.2);
+}
+.button__background:active {
+  transform: scale(1.02);
+}
+.quote {
+  margin: 0;
+  background: rgba(240, 255, 255, 0.178);
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.quote figcaption,
+.quote blockquote {
+  margin: 1em;
+}
+.quote figcaption {
+  text-align: right;
+}
+.quote div {
+  font-size: 20px;
+}
+.btn {
+  width: 180px;
+  height: 40px;
+  background: rgba(240, 255, 255, 0.178);
+  border-radius: 10px;
+  border: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: grayscale(0.8);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Quicksand", sans-serif;
+}
+.btn:hover {
+  filter: grayscale(0.2);
+}
+.btn:active,
+.btn:focus {
+  outline: 0;
+}
+.btn:active {
+  transform: scale(1.02);
+}
+.weather {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: "Quicksand", sans-serif;
+  margin-left: auto;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 300px;
+}
+.city {
+  width: 100px;
+  border: 0;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.temperature {
+  font-size: 30px;
+  width: 30%;
+}
+.weather-description,
+.air__humidity,
+.wind__speed {
+  font-size: 13px;
+  font-weight: 600;
+  width: 100%;
+  text-align: end;
+}
+.weather-icon {
+  font-size: 50px;
+  color: #d4e8f191;
+}
+.weather-icon:hover {
+  animation: shake 1.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .quote {
+    font-size: 15px;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .time {
+    font-size: 5rem;
+    font-weight: 600;
+  }
+  .date {
+    font-size: 14px;
+    font-weight: 900;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .time {
+    font-size: 4rem;
+    font-weight: 600;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .quote {
+    font-size: 14px;
+    width: 90%;
+  }
+}
