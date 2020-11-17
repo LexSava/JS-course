@@ -19,9 +19,18 @@ body {
   font-size: 18px;
 }
 .list li:hover {
-  color: #8b008b;
+  /* color: #8b008b;
   border: 1px solid #8b008b;
-  background-color: #dda0dd9a;
+  background-color: #dda0dd9a; */
+}
+span {
+  margin-left: 5px;
+}
+.list i.collapsed::after {
+  content: "-";
+}
+.list i::after {
+  content: "+";
 }
 .hidden {
   display: none;
