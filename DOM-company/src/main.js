@@ -62,6 +62,7 @@ function makeDOMTree(collection, parentDOMEL) {
 //выводит в консоль текст элемента 
 document.getElementById('dom_tree').addEventListener('click', (event) => {
     if (event.target.tagName === 'LI') {
+        event.target.children[0].classList.toggle('hidden');
         console.log(event.target.innerText);
     }
 })

@@ -244,6 +244,7 @@ function makeDOMTree(collection, parentDOMEL) {
 
 document.getElementById('dom_tree').addEventListener('click', function (event) {
   if (event.target.tagName === 'LI') {
+    event.target.children[0].classList.toggle('hidden');
     console.log(event.target.innerText);
   }
 }); //--------------------------------------------------------
