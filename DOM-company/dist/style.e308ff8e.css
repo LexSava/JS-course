@@ -1,0 +1,31 @@
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.company_title {
+  font-size: 35px;
+  color: #008080;
+  cursor: pointer;
+}
+
+.company {
+  display: flex;
+}
+.list li {
+  list-style-type: none;
+  cursor: pointer;
+  padding: 3px;
+  margin: 3px 0;
+  border: 1px solid transparent;
+  font-size: 18px;
+}
+.list li:hover {
+  color: #8b008b;
+  border: 1px solid #8b008b;
+  background-color: #dda0dd9a;
+}
+.hidden {
+  display: none;
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

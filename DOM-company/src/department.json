@@ -1,0 +1,43 @@
+{
+    "company": [{
+        "id": 0,
+        "name": "General manager",
+        "parent_id": null
+    },{
+        "id": 1,
+        "name": "Sales department",
+        "parent_id": 0
+    },{
+        "id": 2,
+        "name": "R&D department",
+        "parent_id": 0
+    },{
+        "id": 3,
+        "name": "Production & supply department",
+        "parent_id": 0
+    },{
+        "id": 4,
+        "name": "Financial department",
+        "parent_id": 0
+    },{
+        "id": 5,
+        "name": "H&R department",
+        "parent_id": 0
+    },{
+        "id": 6,
+        "name": "QC department",
+        "parent_id": 3
+    },{
+        "id": 7,
+        "name": "MFG department",
+        "parent_id": 3
+    },{
+        "id": 8,
+        "name": "Purchase department",
+        "parent_id": 3
+    },{
+        "id": 9,
+        "name": "Planning department",
+        "parent_id": 3
+    }]
+} 
