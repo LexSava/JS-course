@@ -12,7 +12,7 @@ body {
 }
 .list li {
   list-style-type: none;
-  cursor: pointer;
+
   padding: 3px;
   margin: 3px 0;
   border: 1px solid transparent;
@@ -23,9 +23,13 @@ body {
   border: 1px solid #8b008b;
   background-color: #dda0dd9a;
 }
+i {
+  cursor: pointer;
+}
 span {
   margin-left: 5px;
   padding: 3px;
+  cursor: pointer;
 }
 .list i.collapsed::after {
   content: "−";
