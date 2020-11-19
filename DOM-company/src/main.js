@@ -220,8 +220,10 @@ document.getElementById('dom_tree').addEventListener('click', (event) => {
             console.log(result);
             const tableContainer = document.getElementsByClassName('table_container')[0];
             const newUsersTable = makeTable(result);
-            tableContainer.appendChild(newUsersTable);
-            
+            if (result.length !== 0) {
+                tableContainer.prepend(newUsersTable);
+                tableContainer.children[1].remove();
+            }
         }
         return;
     }

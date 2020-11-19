@@ -445,7 +445,11 @@ document.getElementById('dom_tree').addEventListener('click', function (event) {
       console.log(result);
       var tableContainer = document.getElementsByClassName('table_container')[0];
       var newUsersTable = makeTable(result);
-      tableContainer.appendChild(newUsersTable);
+
+      if (result.length !== 0) {
+        tableContainer.prepend(newUsersTable);
+        tableContainer.children[1].remove();
+      }
     }
 
     return;
@@ -565,7 +569,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60693" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62692" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
