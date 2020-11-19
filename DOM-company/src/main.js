@@ -7,6 +7,8 @@ const departments = getDepartments();
 //     id: 'ID',
 //     parent_id: 'Perent ID'
 // }
+
+
 // Функция Создает структурированный массив Родитель - ребенок
 function makeTree(arr) {
     const copyArr = makeArrayCopy(arr);

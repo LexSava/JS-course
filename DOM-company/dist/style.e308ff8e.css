@@ -25,6 +25,7 @@ body {
 }
 i {
   cursor: pointer;
+  width: 5px;
 }
 span {
   margin-left: 5px;
