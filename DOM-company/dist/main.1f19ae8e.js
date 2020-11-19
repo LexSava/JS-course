@@ -215,8 +215,38 @@ module.exports = {
     "name": "Trey Edwards",
     "id_dep": 7
   }, {
+    "name": "Dayana Davis",
+    "id_dep": 7
+  }, {
     "name": "Nash Bailey",
     "id_dep": 7
+  }, {
+    "name": "Nash Bailey",
+    "id_dep": 7
+  }, {
+    "name": "Nash Bailey",
+    "id_dep": 7
+  }, {
+    "name": "Rhea Lewis",
+    "id_dep": 7
+  }, {
+    "name": "Eloise Wright",
+    "id_dep": 7
+  }, {
+    "name": "Eve Perez",
+    "id_dep": 8
+  }, {
+    "name": "Quenby Henderson",
+    "id_dep": 8
+  }, {
+    "name": "Fabiana Stewart",
+    "id_dep": 9
+  }, {
+    "name": "Odelia Campbell",
+    "id_dep": 8
+  }, {
+    "name": "Fatimah Gonzales",
+    "id_dep": 9
   }]
 };
 },{}],"service.js":[function(require,module,exports) {
@@ -258,7 +288,7 @@ var personnel = (0, _service.getPersonnel)();
 var personnelParamsMap = {
   name: "Name",
   id_dep: "ID dep",
-  id: "ID"
+  dep_name: "Dep name"
 }; // Функция Создает структурированный массив Родитель - ребенок
 
 function makeTree(arr) {
@@ -435,7 +465,6 @@ document.getElementById('dom_tree').addEventListener('click', function (event) {
       }
     } else {
       // Надатие на название департамента.
-      // tableContainer.removeChild(newUsersTable);
       console.log(event.target.dataset.id);
       var idDep = +event.target.dataset.id;
       console.log(idDep);
@@ -569,7 +598,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62692" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60693" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

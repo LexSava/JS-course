@@ -7,7 +7,7 @@ let personnel = getPersonnel();
 const personnelParamsMap = {
     name: "Name",
     id_dep: "ID dep",
-    id: "ID",
+    dep_name: "Dep name",
 }
 
 // Функция Создает структурированный массив Родитель - ребенок
@@ -211,8 +211,6 @@ document.getElementById('dom_tree').addEventListener('click', (event) => {
 
         } else {
             // Надатие на название департамента.
-            // tableContainer.removeChild(newUsersTable);
-
             console.log(event.target.dataset.id);
             let idDep = +event.target.dataset.id;
             console.log(idDep);
@@ -311,6 +309,7 @@ function makeTable(personnel) {
             if (key in user) {
                 td.innerHTML = user[key];
             }
+
 
             trEl.appendChild(td);
         }

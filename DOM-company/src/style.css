@@ -1,6 +1,9 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+.content {
+  display: flex;
+}
 .company_title {
   font-size: 35px;
   color: #008080;
@@ -55,8 +58,10 @@ i {
   color: #8b008b;
   border-bottom: 1px solid;
 }
-.table_container {
-  width: 300px;
+.table_container table {
+  width: 350px;
+  margin: 30px 0 0 70px;
+  cursor: pointer;
 }
 .table_container th,
 td {
@@ -64,6 +69,4 @@ td {
   border: 1px solid black;
   text-align: center;
 }
-.active {
-  display: none;
-}
+
