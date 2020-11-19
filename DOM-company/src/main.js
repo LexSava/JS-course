@@ -56,14 +56,17 @@ function makeDOMTree(collection, parentDOMEL) {
 
             liEl.appendChild(spanEl);
             // создаем кнопки редактирования элементов ()
+
             const controlEleContainer = document.createElement('div');
             controlEleContainer.classList.add('inline_block');
 
 
             const addEl = document.createElement('span');
+            addEl.dataset.action = "add";
             addEl.innerText = "add";
 
             const editEl = document.createElement('span');
+            editEl.dataset.action = "edit";
             editEl.innerText = "edit";
 
             controlEleContainer.appendChild(addEl);
@@ -84,6 +87,7 @@ function makeDOMTree(collection, parentDOMEL) {
             } else {
                 const deleteEl = document.createElement('span');
                 deleteEl.innerText = "delete";
+                deleteEl.dataset.action = "delete";
                 controlEleContainer.appendChild(deleteEl);
             }
         }
@@ -92,8 +96,46 @@ function makeDOMTree(collection, parentDOMEL) {
 }
 //-----------------------------------------------------------
 
-//выводит в консоль текст элемента 
+function editDept(deptEl) {
+    const deptName = deptEl.innerText;
+
+    const newDepName = prompt('Please ented valid dept name:', deptName);
+
+    if (newDepName === null) {
+        return;
+    }
+
+    if (newDepName === '') {
+        alert('Name is not valid');
+
+        editDept(deptEl);
+    }
+}
+
+
+
+// выводит в консоль текст элемента 
 document.getElementById('dom_tree').addEventListener('click', (event) => {
+
+    // при нажатии на кнопки редактирования выводит 
+    if (event.target.tagName === 'SPAN') {
+
+        if (event.target.dataset.action) {
+            const action = event.target.dataset.action;
+
+            const deptEl = event.target.parentElement.previousElementSibling;
+
+            if (action === 'edit') {
+                editDept(deptEl)
+            }
+        } else {
+            console.log(event.target.dataset.id);
+        }
+        return;
+    }
+    // ----------------------------------------------------------------
+
+    // настройка кнопки скрывать элементы + и - 
     if (event.target.tagName === 'I') {
         event.target.classList.toggle('collapsed');
         const children = event.target.parentElement.children;

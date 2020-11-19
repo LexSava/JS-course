@@ -241,8 +241,10 @@ function makeDOMTree(collection, parentDOMEL) {
       var controlEleContainer = document.createElement('div');
       controlEleContainer.classList.add('inline_block');
       var addEl = document.createElement('span');
+      addEl.dataset.action = "add";
       addEl.innerText = "add";
       var editEl = document.createElement('span');
+      editEl.dataset.action = "edit";
       editEl.innerText = "edit";
       controlEleContainer.appendChild(addEl);
       controlEleContainer.appendChild(editEl);
@@ -256,15 +258,48 @@ function makeDOMTree(collection, parentDOMEL) {
       } else {
         var deleteEl = document.createElement('span');
         deleteEl.innerText = "delete";
+        deleteEl.dataset.action = "delete";
         controlEleContainer.appendChild(deleteEl);
       }
     }
   }
 } //-----------------------------------------------------------
-//выводит в консоль текст элемента 
+
+
+function editDept(deptEl) {
+  var deptName = deptEl.innerText;
+  var newDepName = prompt('Please ented valid dept name:', deptName);
+
+  if (newDepName === null) {
+    return;
+  }
+
+  if (newDepName === '') {
+    alert('Name is not valid');
+    editDept(deptEl);
+  }
+} // выводит в консоль текст элемента 
 
 
 document.getElementById('dom_tree').addEventListener('click', function (event) {
+  // при нажатии на кнопки редактирования выводит 
+  if (event.target.tagName === 'SPAN') {
+    if (event.target.dataset.action) {
+      var action = event.target.dataset.action;
+      var deptEl = event.target.parentElement.previousElementSibling;
+
+      if (action === 'edit') {
+        editDept(deptEl);
+      }
+    } else {
+      console.log(event.target.dataset.id);
+    }
+
+    return;
+  } // ----------------------------------------------------------------
+  // настройка кнопки скрывать элементы + и - 
+
+
   if (event.target.tagName === 'I') {
     event.target.classList.toggle('collapsed');
     var children = event.target.parentElement.children;
