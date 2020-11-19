@@ -26,51 +26,51 @@
         },
         {
             "name": "Willem Edwards",
-            "id_dep": 1
+            "id_dep": 2
         },
         {
             "name": "Finlee Nelson",
-            "id_dep": 1
+            "id_dep": 2
         },
         {
             "name": "Harrison Wood",
-            "id_dep": 1
+            "id_dep": 2
         },
         {
             "name": "Kieran Baker",
-            "id_dep": 1
+            "id_dep": 2
         },
         {
             "name": "Zaki Wright",
-            "id_dep": 1
+            "id_dep": 4
         },
         {
             "name": "Justin Thompson",
-            "id_dep": 1
+            "id_dep": 4
         },
         {
             "name": "Ignace Allen",
-            "id_dep": 1
+            "id_dep": 5
         },
         {
             "name": "Varun Brooks",
-            "id_dep": 1
+            "id_dep": 5
         },
         {
             "name": "Wiley Bryant",
-            "id_dep": 1
+            "id_dep": 6
         },
         {
             "name": "Willis Robinson",
-            "id_dep": 1
+            "id_dep": 6
         },
         {
             "name": "Trey Edwards",
-            "id_dep": 1
+            "id_dep": 7
         },
         {
             "name": "Nash Bailey",
-            "id_dep": 1
+            "id_dep": 7
         }
     ]
 }

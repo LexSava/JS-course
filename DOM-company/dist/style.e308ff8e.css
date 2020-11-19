@@ -56,5 +56,12 @@ i {
   border-bottom: 1px solid;
 }
 
+.table_container th,
+td {
+  padding: 0 5px;
+  border: 1px solid black;
+  text-align: center;
+}
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

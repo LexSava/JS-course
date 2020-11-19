@@ -4,11 +4,11 @@ import { getPersonnel } from './service';
 let departments = getDepartments();
 let personnel = getPersonnel();
 
-// const departmentsParamsMap = {
-//     name: 'Name',
-//     id: 'ID',
-//     parent_id: 'Perent ID'
-// }
+const personnelParamsMap = {
+    name: "Name",
+    id_dep: "ID dep",
+    id: "ID",
+}
 
 // Функция Создает структурированный массив Родитель - ребенок
 function makeTree(arr) {
@@ -264,4 +264,49 @@ const generateId = (length = 5) => {
     }
     return result;
 };
-console.log(departments);
+//Строим таблицу 
+
+const tableContainer = document.getElementsByClassName('table_container')[0];
+const usersTable = makeTable(personnel);
+
+tableContainer.appendChild(usersTable);
+
+function makeTable(personnel) {
+    const tableEl = document.createElement('table');
+
+    const tableHead = document.createElement('thead');
+    const trHeadEl = document.createElement('tr');
+
+    for (let key in personnelParamsMap) {
+        const col = personnelParamsMap[key];
+
+        const th = document.createElement('th');
+        th.innerHTML = col;
+
+        trHeadEl.appendChild(th);
+    }
+    tableHead.appendChild(trHeadEl);
+    tableEl.appendChild(tableHead);
+
+    const tableBody = document.createElement('tbody');
+
+    personnel.forEach(user => {
+
+        const trEl = document.createElement('tr');
+
+        for (let key in personnelParamsMap) {
+            const td = document.createElement('td');
+
+            if (key in user) {
+                td.innerHTML = user[key];
+            }
+
+            trEl.appendChild(td);
+        }
+        tableBody.appendChild(trEl);
+    });
+    tableEl.appendChild(tableBody);
+
+    return tableEl;
+
+}

@@ -183,40 +183,40 @@ module.exports = {
     "id_dep": 1
   }, {
     "name": "Willem Edwards",
-    "id_dep": 1
+    "id_dep": 2
   }, {
     "name": "Finlee Nelson",
-    "id_dep": 1
+    "id_dep": 2
   }, {
     "name": "Harrison Wood",
-    "id_dep": 1
+    "id_dep": 2
   }, {
     "name": "Kieran Baker",
-    "id_dep": 1
+    "id_dep": 2
   }, {
     "name": "Zaki Wright",
-    "id_dep": 1
+    "id_dep": 4
   }, {
     "name": "Justin Thompson",
-    "id_dep": 1
+    "id_dep": 4
   }, {
     "name": "Ignace Allen",
-    "id_dep": 1
+    "id_dep": 5
   }, {
     "name": "Varun Brooks",
-    "id_dep": 1
+    "id_dep": 5
   }, {
     "name": "Wiley Bryant",
-    "id_dep": 1
+    "id_dep": 6
   }, {
     "name": "Willis Robinson",
-    "id_dep": 1
+    "id_dep": 6
   }, {
     "name": "Trey Edwards",
-    "id_dep": 1
+    "id_dep": 7
   }, {
     "name": "Nash Bailey",
-    "id_dep": 1
+    "id_dep": 7
   }]
 };
 },{}],"service.js":[function(require,module,exports) {
@@ -254,12 +254,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var departments = (0, _service.getDepartments)();
-var personnel = (0, _service.getPersonnel)(); // const departmentsParamsMap = {
-//     name: 'Name',
-//     id: 'ID',
-//     parent_id: 'Perent ID'
-// }
-// Функция Создает структурированный массив Родитель - ребенок
+var personnel = (0, _service.getPersonnel)();
+var personnelParamsMap = {
+  name: "Name",
+  id_dep: "ID dep",
+  id: "ID"
+}; // Функция Создает структурированный массив Родитель - ребенок
 
 function makeTree(arr) {
   var copyArr = makeArrayCopy(arr);
@@ -488,9 +488,46 @@ var generateId = function generateId() {
   }
 
   return result;
-};
+}; //Строим таблицу 
 
-console.log(departments);
+
+var tableContainer = document.getElementsByClassName('table_container')[0];
+var usersTable = makeTable(personnel);
+tableContainer.appendChild(usersTable);
+
+function makeTable(personnel) {
+  var tableEl = document.createElement('table');
+  var tableHead = document.createElement('thead');
+  var trHeadEl = document.createElement('tr');
+
+  for (var key in personnelParamsMap) {
+    var col = personnelParamsMap[key];
+    var th = document.createElement('th');
+    th.innerHTML = col;
+    trHeadEl.appendChild(th);
+  }
+
+  tableHead.appendChild(trHeadEl);
+  tableEl.appendChild(tableHead);
+  var tableBody = document.createElement('tbody');
+  personnel.forEach(function (user) {
+    var trEl = document.createElement('tr');
+
+    for (var _key in personnelParamsMap) {
+      var td = document.createElement('td');
+
+      if (_key in user) {
+        td.innerHTML = user[_key];
+      }
+
+      trEl.appendChild(td);
+    }
+
+    tableBody.appendChild(trEl);
+  });
+  tableEl.appendChild(tableBody);
+  return tableEl;
+}
 },{"./service":"service.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

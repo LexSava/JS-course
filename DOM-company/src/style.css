@@ -55,3 +55,10 @@ i {
   color: #8b008b;
   border-bottom: 1px solid;
 }
+
+.table_container th,
+td {
+  padding: 0 5px;
+  border: 1px solid black;
+  text-align: center;
+}
