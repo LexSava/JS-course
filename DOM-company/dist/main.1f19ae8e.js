@@ -227,15 +227,24 @@ function makeDOMTree(collection, parentDOMEL) {
   if (collection.length) {
     for (var i = 0; i < collection.length; i++) {
       var treeItem = collection[i];
-      var liEl = document.createElement('li');
-      var spanEl = document.createElement('span');
-      spanEl.innerText = treeItem.name; //Проверка есть ли у элемента дети, если есть добавляем '+'
+      var liEl = document.createElement('li'); //Проверка есть ли у элемента дети, если есть добавляем '+'
 
       if (treeItem.children) {
         liEl.appendChild(getBulltEl());
       }
 
-      liEl.appendChild(spanEl);
+      var spanEl = document.createElement('span');
+      spanEl.innerText = treeItem.name;
+      liEl.appendChild(spanEl); // создаем кнопки редактирования элементов ()
+
+      var controlEleContainer = document.createElement('div');
+      var addEl = document.createElement('span');
+      addEl.innerText = "add";
+      var editEl = document.createElement('span');
+      editEl.innerText = "edit";
+      controlEleContainer.appendChild(addEl);
+      controlEleContainer.appendChild(editEl);
+      liEl.appendChild(controlEleContainer);
       parentDOMEL.appendChild(liEl);
 
       if (treeItem.children && treeItem.children.length) {

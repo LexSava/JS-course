@@ -44,15 +44,34 @@ function makeDOMTree(collection, parentDOMEL) {
             const treeItem = collection[i];
 
             const liEl = document.createElement('li');
-            const spanEl = document.createElement('span');
-            spanEl.innerText = treeItem.name;
+
             //Проверка есть ли у элемента дети, если есть добавляем '+'
             if (treeItem.children) {
                 liEl.appendChild(getBulltEl());
             }
 
+            const spanEl = document.createElement('span');
+            spanEl.innerText = treeItem.name;
 
             liEl.appendChild(spanEl);
+            // создаем кнопки редактирования элементов ()
+            const controlEleContainer = document.createElement('div');
+
+
+
+            const addEl = document.createElement('span');
+            addEl.innerText = "add";
+
+            const editEl = document.createElement('span');
+            editEl.innerText = "edit";
+
+            controlEleContainer.appendChild(addEl);
+            controlEleContainer.appendChild(editEl);
+
+            liEl.appendChild(controlEleContainer);
+
+
+
             parentDOMEL.appendChild(liEl);
 
             if (treeItem.children && treeItem.children.length) {
@@ -103,3 +122,4 @@ function makeArrayCopy(arr) {
     });
 }
 //------------------------------------------------------------------------
+

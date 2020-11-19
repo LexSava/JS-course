@@ -12,11 +12,18 @@ body {
 }
 .list li {
   list-style-type: none;
-
   padding: 3px;
   margin: 3px 0;
   border: 1px solid transparent;
   font-size: 18px;
+  box-sizing: border-box;
+}
+.list span {
+  margin-left: 5px;
+  padding: 3px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  box-sizing: border-box;
 }
 .list span:hover {
   color: #8b008b;
@@ -26,11 +33,6 @@ body {
 i {
   cursor: pointer;
   width: 5px;
-}
-span {
-  margin-left: 5px;
-  padding: 3px;
-  cursor: pointer;
 }
 .list i.collapsed::after {
   content: "−";
