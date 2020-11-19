@@ -1,6 +1,8 @@
 import { getDepartments } from './service';
+import { getPersonnel } from './service';
 
 let departments = getDepartments();
+let personnel = getPersonnel();
 
 // const departmentsParamsMap = {
 //     name: 'Name',
@@ -159,7 +161,7 @@ function addDept(parentDeptId) {
 
 
     const newDept = {
-        id: generateId,
+        id: generateId(),
         name: newDepName,
         parent_id: parentDeptId,
     };
@@ -209,6 +211,8 @@ document.getElementById('dom_tree').addEventListener('click', (event) => {
             }
 
         } else {
+            // Надатие на название департамента.
+            console.log(departments);
             console.log(event.target.dataset.id);
         }
         return;
@@ -260,3 +264,4 @@ const generateId = (length = 5) => {
     }
     return result;
 };
+console.log(departments);

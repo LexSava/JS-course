@@ -161,22 +161,88 @@ module.exports = {
     "parent_id": 3
   }]
 };
+},{}],"personnel.json":[function(require,module,exports) {
+module.exports = {
+  "personnel": [{
+    "name": "Keaton Rogers",
+    "id_dep": 1
+  }, {
+    "name": "Jonah Coleman",
+    "id_dep": 1
+  }, {
+    "name": "Simon Adams",
+    "id_dep": 1
+  }, {
+    "name": "Braden Miller",
+    "id_dep": 1
+  }, {
+    "name": "Esteban Miller",
+    "id_dep": 1
+  }, {
+    "name": "Xan Martinez",
+    "id_dep": 1
+  }, {
+    "name": "Willem Edwards",
+    "id_dep": 1
+  }, {
+    "name": "Finlee Nelson",
+    "id_dep": 1
+  }, {
+    "name": "Harrison Wood",
+    "id_dep": 1
+  }, {
+    "name": "Kieran Baker",
+    "id_dep": 1
+  }, {
+    "name": "Zaki Wright",
+    "id_dep": 1
+  }, {
+    "name": "Justin Thompson",
+    "id_dep": 1
+  }, {
+    "name": "Ignace Allen",
+    "id_dep": 1
+  }, {
+    "name": "Varun Brooks",
+    "id_dep": 1
+  }, {
+    "name": "Wiley Bryant",
+    "id_dep": 1
+  }, {
+    "name": "Willis Robinson",
+    "id_dep": 1
+  }, {
+    "name": "Trey Edwards",
+    "id_dep": 1
+  }, {
+    "name": "Nash Bailey",
+    "id_dep": 1
+  }]
+};
 },{}],"service.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getDepartments = void 0;
+exports.getPersonnel = exports.getDepartments = void 0;
 
 var _department = require("./department.json");
+
+var _personnel = require("./personnel.json");
 
 var getDepartments = function getDepartments() {
   return _department.company;
 };
 
 exports.getDepartments = getDepartments;
-},{"./department.json":"department.json"}],"main.js":[function(require,module,exports) {
+
+var getPersonnel = function getPersonnel() {
+  return _personnel.personnel;
+};
+
+exports.getPersonnel = getPersonnel;
+},{"./department.json":"department.json","./personnel.json":"personnel.json"}],"main.js":[function(require,module,exports) {
 "use strict";
 
 var _service = require("./service");
@@ -187,7 +253,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var departments = (0, _service.getDepartments)(); // const departmentsParamsMap = {
+var departments = (0, _service.getDepartments)();
+var personnel = (0, _service.getPersonnel)(); // const departmentsParamsMap = {
 //     name: 'Name',
 //     id: 'ID',
 //     parent_id: 'Perent ID'
@@ -324,7 +391,7 @@ function addDept(parentDeptId) {
   }
 
   var newDept = {
-    id: generateId,
+    id: generateId(),
     name: newDepName,
     parent_id: parentDeptId
   };
@@ -367,6 +434,8 @@ document.getElementById('dom_tree').addEventListener('click', function (event) {
           }
       }
     } else {
+      // Надатие на название департамента.
+      console.log(departments);
       console.log(event.target.dataset.id);
     }
 
@@ -420,6 +489,8 @@ var generateId = function generateId() {
 
   return result;
 };
+
+console.log(departments);
 },{"./service":"service.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -448,7 +519,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60693" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62692" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
