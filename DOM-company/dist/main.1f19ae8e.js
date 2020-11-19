@@ -279,6 +279,7 @@ function editDept(deptEl) {
   if (newDepName === '') {
     alert('Name is not valid');
     editDept(deptEl);
+    return;
   }
 
   deptEl.innerText = newDepName;
@@ -305,6 +306,37 @@ function deleteDept(deptId) {
     treeContainer.appendChild(newTree);
     makeDOMTree(_jsTree, newTree);
   }
+} //---------------------------------------------------
+// Функия при нажатии на add (добавление депортамента)
+
+
+function addDept(parentDeptId) {
+  var newDepName = prompt('Please ented valid dept name:', '');
+
+  if (newDepName === null) {
+    return;
+  }
+
+  if (newDepName === '') {
+    alert('Name is not valid');
+    addDept(parentDeptId);
+    return;
+  }
+
+  var newDept = {
+    id: generateId,
+    name: newDepName,
+    parent_id: parentDeptId
+  };
+  departments.push(newDept);
+  var jsTree = makeTree(departments);
+  var treeContainer = document.getElementById('dom_tree');
+  var tree = document.getElementsByClassName('list')[0];
+  treeContainer.removeChild(tree);
+  var newTree = document.createElement('ul');
+  newTree.classList.add('list');
+  treeContainer.appendChild(newTree);
+  makeDOMTree(jsTree, newTree);
 } // выводит в консоль текст элемента 
 
 
@@ -325,6 +357,12 @@ document.getElementById('dom_tree').addEventListener('click', function (event) {
         case 'delete':
           {
             deleteDept(+deptEl.dataset.id);
+            break;
+          }
+
+        case 'add':
+          {
+            addDept(+deptEl.dataset.id);
             break;
           }
       }
@@ -367,6 +405,21 @@ function makeArrayCopy(arr) {
     return _objectSpread({}, item);
   });
 } //------------------------------------------------------------------------
+// создает зандомный ID
+
+
+var generateId = function generateId() {
+  var length = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+  var result = '';
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charsLength = chars.length;
+
+  for (var i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * charsLength));
+  }
+
+  return result;
+};
 },{"./service":"service.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

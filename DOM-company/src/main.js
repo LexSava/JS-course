@@ -8,7 +8,6 @@ let departments = getDepartments();
 //     parent_id: 'Perent ID'
 // }
 
-
 // Функция Создает структурированный массив Родитель - ребенок
 function makeTree(arr) {
     const copyArr = makeArrayCopy(arr);
@@ -110,12 +109,13 @@ function editDept(deptEl) {
 
     if (newDepName === '') {
         alert('Name is not valid');
-
         editDept(deptEl);
+        return;
     }
     deptEl.innerText = newDepName;
 }
 //---------------------------------------------------
+
 // Функия при нажатии на delete (удаление депортамента)
 function deleteDept(deptId) {
     const yes = confirm('Do you really want to delete dept?')
@@ -138,6 +138,48 @@ function deleteDept(deptId) {
         makeDOMTree(jsTree, newTree);
     }
 }
+//---------------------------------------------------
+
+// Функия при нажатии на add (добавление депортамента)
+
+function addDept(parentDeptId) {
+
+
+    const newDepName = prompt('Please ented valid dept name:', '');
+
+    if (newDepName === null) {
+        return;
+    }
+
+    if (newDepName === '') {
+        alert('Name is not valid');
+        addDept(parentDeptId);
+        return
+    }
+
+
+    const newDept = {
+        id: generateId,
+        name: newDepName,
+        parent_id: parentDeptId,
+    };
+
+    departments.push(newDept);
+
+    const jsTree = makeTree(departments);
+
+    const treeContainer = document.getElementById('dom_tree');
+    const tree = document.getElementsByClassName('list')[0];
+
+    treeContainer.removeChild(tree);
+
+    const newTree = document.createElement('ul');
+    newTree.classList.add('list');
+
+    treeContainer.appendChild(newTree);
+
+    makeDOMTree(jsTree, newTree);
+}
 
 
 // выводит в консоль текст элемента 
@@ -158,6 +200,10 @@ document.getElementById('dom_tree').addEventListener('click', (event) => {
                 }
                 case 'delete': {
                     deleteDept(+deptEl.dataset.id);
+                    break;
+                }
+                case 'add': {
+                    addDept(+deptEl.dataset.id);
                     break;
                 }
             }
@@ -204,3 +250,13 @@ function makeArrayCopy(arr) {
 }
 //------------------------------------------------------------------------
 
+// создает зандомный ID
+const generateId = (length = 5) => {
+    let result = '';
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charsLength = chars.length;
+    for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * charsLength));
+    }
+    return result;
+};
