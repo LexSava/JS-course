@@ -81,6 +81,10 @@ function makeDOMTree(collection, parentDOMEL) {
                 liEl.appendChild(ulEl);
 
                 makeDOMTree(treeItem.children, ulEl);
+            } else {
+                const deleteEl = document.createElement('span');
+                deleteEl.innerText = "delete";
+                controlEleContainer.appendChild(deleteEl);
             }
         }
     }
