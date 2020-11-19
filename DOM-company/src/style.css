@@ -25,7 +25,7 @@ body {
   border: 1px solid transparent;
   box-sizing: border-box;
 }
-.list span:hover {
+.depName:hover {
   color: #8b008b;
   border: 1px solid #8b008b;
   background-color: #dda0dd9a;
@@ -42,4 +42,16 @@ i {
 }
 .hidden {
   display: none;
+}
+.inline_block {
+  display: inline;
+  font-size: 14px;
+  color: #444444;
+}
+.inline_block span {
+  margin: 0;
+}
+.inline_block span:hover {
+  color: #ff00ff;
+  border-bottom: 1px solid;
 }

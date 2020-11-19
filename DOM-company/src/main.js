@@ -51,12 +51,13 @@ function makeDOMTree(collection, parentDOMEL) {
             }
 
             const spanEl = document.createElement('span');
+            spanEl.classList.add('depName');
             spanEl.innerText = treeItem.name;
 
             liEl.appendChild(spanEl);
             // создаем кнопки редактирования элементов ()
             const controlEleContainer = document.createElement('div');
-
+            controlEleContainer.classList.add('inline_block');
 
 
             const addEl = document.createElement('span');
