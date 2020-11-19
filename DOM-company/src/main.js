@@ -183,7 +183,6 @@ function addDept(parentDeptId) {
     makeDOMTree(jsTree, newTree);
 }
 
-
 // выводит в консоль текст элемента 
 document.getElementById('dom_tree').addEventListener('click', (event) => {
 
@@ -212,8 +211,17 @@ document.getElementById('dom_tree').addEventListener('click', (event) => {
 
         } else {
             // Надатие на название департамента.
-            console.log(departments);
+            // tableContainer.removeChild(newUsersTable);
+
             console.log(event.target.dataset.id);
+            let idDep = +event.target.dataset.id;
+            console.log(idDep);
+            let result = personnel.filter(elem => elem.id_dep === idDep);
+            console.log(result);
+            const tableContainer = document.getElementsByClassName('table_container')[0];
+            const newUsersTable = makeTable(result);
+            tableContainer.appendChild(newUsersTable);
+            
         }
         return;
     }
@@ -265,13 +273,14 @@ const generateId = (length = 5) => {
     return result;
 };
 //Строим таблицу 
+// const tableContainer = document.getElementsByClassName('table_container')[0];
+// tableContainer.classList.remove('active');
+// const usersTable = makeTable(personnel);
+// tableContainer.appendChild(usersTable);
 
-const tableContainer = document.getElementsByClassName('table_container')[0];
-const usersTable = makeTable(personnel);
-
-tableContainer.appendChild(usersTable);
 
 function makeTable(personnel) {
+
     const tableEl = document.createElement('table');
 
     const tableHead = document.createElement('thead');

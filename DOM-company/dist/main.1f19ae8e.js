@@ -435,8 +435,17 @@ document.getElementById('dom_tree').addEventListener('click', function (event) {
       }
     } else {
       // Надатие на название департамента.
-      console.log(departments);
+      // tableContainer.removeChild(newUsersTable);
       console.log(event.target.dataset.id);
+      var idDep = +event.target.dataset.id;
+      console.log(idDep);
+      var result = personnel.filter(function (elem) {
+        return elem.id_dep === idDep;
+      });
+      console.log(result);
+      var tableContainer = document.getElementsByClassName('table_container')[0];
+      var newUsersTable = makeTable(result);
+      tableContainer.appendChild(newUsersTable);
     }
 
     return;
@@ -489,11 +498,11 @@ var generateId = function generateId() {
 
   return result;
 }; //Строим таблицу 
+// const tableContainer = document.getElementsByClassName('table_container')[0];
+// tableContainer.classList.remove('active');
+// const usersTable = makeTable(personnel);
+// tableContainer.appendChild(usersTable);
 
-
-var tableContainer = document.getElementsByClassName('table_container')[0];
-var usersTable = makeTable(personnel);
-tableContainer.appendChild(usersTable);
 
 function makeTable(personnel) {
   var tableEl = document.createElement('table');
@@ -556,7 +565,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62692" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60693" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
