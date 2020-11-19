@@ -1,6 +1,6 @@
 import { getDepartments } from './service';
 
-const departments = getDepartments();
+let departments = getDepartments();
 
 // const departmentsParamsMap = {
 //     name: 'Name',
@@ -37,6 +37,7 @@ const jsTree = makeTree(departments);
 
 // запускаем функцию построения ДОМ дерева 
 makeDOMTree(jsTree, document.getElementsByClassName('list')[0]);
+
 // Функия создает ДОМ дерево 
 function makeDOMTree(collection, parentDOMEL) {
     if (collection.length) {
@@ -53,6 +54,7 @@ function makeDOMTree(collection, parentDOMEL) {
             const spanEl = document.createElement('span');
             spanEl.classList.add('depName');
             spanEl.innerText = treeItem.name;
+            spanEl.dataset.id = treeItem.id;
 
             liEl.appendChild(spanEl);
             // создаем кнопки редактирования элементов ()
@@ -96,6 +98,7 @@ function makeDOMTree(collection, parentDOMEL) {
 }
 //-----------------------------------------------------------
 
+// Функия при нажатии на edit (переименование депортамента)
 function editDept(deptEl) {
     const deptName = deptEl.innerText;
 
@@ -110,8 +113,31 @@ function editDept(deptEl) {
 
         editDept(deptEl);
     }
+    deptEl.innerText = newDepName;
 }
+//---------------------------------------------------
+// Функия при нажатии на delete (удаление депортамента)
+function deleteDept(deptId) {
+    const yes = confirm('Do you really want to delete dept?')
 
+    if (yes) {
+        departments = departments.filter(({ id }) => id !== deptId);
+
+        const jsTree = makeTree(departments);
+
+        const treeContainer = document.getElementById('dom_tree');
+        const tree = document.getElementsByClassName('list')[0];
+
+        treeContainer.removeChild(tree);
+
+        const newTree = document.createElement('ul');
+        newTree.classList.add('list');
+
+        treeContainer.appendChild(newTree);
+
+        makeDOMTree(jsTree, newTree);
+    }
+}
 
 
 // выводит в консоль текст элемента 
@@ -125,9 +151,17 @@ document.getElementById('dom_tree').addEventListener('click', (event) => {
 
             const deptEl = event.target.parentElement.previousElementSibling;
 
-            if (action === 'edit') {
-                editDept(deptEl)
+            switch (action) {
+                case 'edit': {
+                    editDept(deptEl)
+                    break;
+                }
+                case 'delete': {
+                    deleteDept(+deptEl.dataset.id);
+                    break;
+                }
             }
+
         } else {
             console.log(event.target.dataset.id);
         }

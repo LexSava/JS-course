@@ -236,6 +236,7 @@ function makeDOMTree(collection, parentDOMEL) {
       var spanEl = document.createElement('span');
       spanEl.classList.add('depName');
       spanEl.innerText = treeItem.name;
+      spanEl.dataset.id = treeItem.id;
       liEl.appendChild(spanEl); // создаем кнопки редактирования элементов ()
 
       var controlEleContainer = document.createElement('div');
@@ -264,6 +265,7 @@ function makeDOMTree(collection, parentDOMEL) {
     }
   }
 } //-----------------------------------------------------------
+// Функия при нажатии на edit (переименование депортамента)
 
 
 function editDept(deptEl) {
@@ -278,6 +280,31 @@ function editDept(deptEl) {
     alert('Name is not valid');
     editDept(deptEl);
   }
+
+  deptEl.innerText = newDepName;
+} //---------------------------------------------------
+// Функия при нажатии на delete (удаление депортамента)
+
+
+function deleteDept(deptId) {
+  var yes = confirm('Do you really want to delete dept?');
+
+  if (yes) {
+    departments = departments.filter(function (_ref) {
+      var id = _ref.id;
+      return id !== deptId;
+    });
+
+    var _jsTree = makeTree(departments);
+
+    var treeContainer = document.getElementById('dom_tree');
+    var tree = document.getElementsByClassName('list')[0];
+    treeContainer.removeChild(tree);
+    var newTree = document.createElement('ul');
+    newTree.classList.add('list');
+    treeContainer.appendChild(newTree);
+    makeDOMTree(_jsTree, newTree);
+  }
 } // выводит в консоль текст элемента 
 
 
@@ -288,8 +315,18 @@ document.getElementById('dom_tree').addEventListener('click', function (event) {
       var action = event.target.dataset.action;
       var deptEl = event.target.parentElement.previousElementSibling;
 
-      if (action === 'edit') {
-        editDept(deptEl);
+      switch (action) {
+        case 'edit':
+          {
+            editDept(deptEl);
+            break;
+          }
+
+        case 'delete':
+          {
+            deleteDept(+deptEl.dataset.id);
+            break;
+          }
       }
     } else {
       console.log(event.target.dataset.id);
@@ -358,7 +395,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62692" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60693" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
